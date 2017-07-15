@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="Khóa Học Lập Trình Laravel Framework 5.x Tại Khoa Phạm">
     <meta name="author" content="">
-    <title>Admin - Khoa Phạm</title>
+    <title>Laravel Demo</title>
     <base href="{{asset('')}}">
     <!-- Bootstrap Core CSS -->
     <link href="admin_asset/bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -61,7 +61,8 @@
         });
     });
 </script>
-
+<script type="text/javascript" language="javascript" src="admin_asset/ckeditor/ckeditor.js" ></script>
+@yield('script')
 
 </body>
 
