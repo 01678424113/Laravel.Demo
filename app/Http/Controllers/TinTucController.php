@@ -6,6 +6,7 @@ use App\TinTuc;
 use Illuminate\Http\Request;
 use App\TheLoai;
 use App\LoaiTin;
+use App\Comment;
 
 class TinTucController extends Controller
 {
@@ -54,7 +55,7 @@ class TinTucController extends Controller
                 $hinh = str_random(5)."_".$name;
             };
             if($duoi != 'jpg' && $duoi != 'png'){
-                return redirect('admin/tintuc/them')->with('loi','Hình ảnh phải có đuôi jpg hoặc png');
+                return redirect('admin/tintuc/sua/'.$id)->with('loi','Hình ảnh phải có đuôi jpg hoặc png');
             };
             $file->move("upload/tintuc/",$hinh);
             unlink("upload/tintuc/".$tintuc->Hinh);

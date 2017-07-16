@@ -25,6 +25,11 @@
                                 {{session('thongbao')}}
                             </div>
                         @endif
+                        @if(session('loi'))
+                            <div class="alert alert-danger">
+                                {{session('loi')}}
+                            </div>
+                        @endif
                         <input type="hidden" name="_token" value="{{csrf_token()}}">
                         <div class="form-group">
                             <label>Thể loại</label>
@@ -60,7 +65,8 @@
                         </div>
                         <div class="form-group">
                             <label>Nội dung</label>
-                            <textarea class="form-control ckeditor" id="demo" rows="3" name="NoiDung">{{$tintuc->NoiDung}}</textarea>
+                            <textarea class="form-control ckeditor" id="demo" rows="3"
+                                      name="NoiDung">{{$tintuc->NoiDung}}</textarea>
                         </div>
                         <div class="form-group">
                             <label>Hình ảnh</label>
@@ -72,7 +78,7 @@
                             <label class="radio-inline">
                                 <input name="NoiBat" value="0"
                                        @if($tintuc->NoiBat == 0)
-                                               {{"checked"}}
+                                       {{"checked"}}
                                        @endif
                                        type="radio">Không
                             </label>
@@ -90,6 +96,32 @@
                 </div>
             </div>
             <!-- /.row -->
+            <div class="row">
+                <table class="table table-striped table-bordered table-hover" id="dataTables-example">
+                    <thead>
+                    <tr align="center">
+                        <th>ID</th>
+                        <th>Người dùng</th>
+                        <th>Nội dung</th>
+                        <th>Ngày đăng</th>
+                        <th>Delete</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    @foreach($tintuc->comment as $cm)
+                        <tr class="odd gradeX" align="center">
+                            <td>{{$cm->id}}</td>
+                            <td>{{$cm->user->name}}</td>
+                            <td>{{$cm->NoiDung}}</td>
+                            <td>{{$cm->create_at}}</td>
+                            <td class="center"><i class="fa fa-trash-o  fa-fw"></i>
+                                <a href="admin/comment/xoa/{{$cm->id}}/{{$tintuc->id}}"> Delete</a>
+                            </td>
+                        </tr>
+                    @endforeach
+                    </tbody>
+                </table>
+            </div>
         </div>
         <!-- /.container-fluid -->
     </div>

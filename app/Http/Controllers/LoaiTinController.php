@@ -21,14 +21,13 @@ class LoaiTinController extends Controller
     public function postSua(Request $request,$id){
         $this->validate($request,
             [
-                'Ten'=>'required|max:100|min:3|unique:LoaiTin,Ten',
+                'Ten'=>'required|max:100|min:3',
                 'TheLoai'=>'required'
             ],
             [
                 'Ten.required'=>'Bạn chưa nhập tên sửa',
                 'Ten.min'=>'Bạn cần nhập tên lớn hơn 3 đến 100 kí tự',
                 'Ten.max'=>'Bạn cần nhập tên lớn hơn 3 đến 100 kí tự',
-                'Ten.unique'=>'Tên đã tồn tại',
                 'TheLoai.required'=>'Chưa có thể loại'
             ]);
         $loaitin = LoaiTin::find($id);
