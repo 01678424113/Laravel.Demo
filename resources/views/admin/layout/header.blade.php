@@ -18,15 +18,17 @@
             <a class="dropdown-toggle" data-toggle="dropdown" href="#">
                 <i class="fa fa-user fa-fw"></i>  <i class="fa fa-caret-down"></i>
             </a>
+            @if(isset($user_login))
             <ul class="dropdown-menu dropdown-user">
-                <li><a href="#"><i class="fa fa-user fa-fw"></i> User Profile</a>
+                <li><i class="fa fa-user fa-fw"></i> {{$user_login->email}}
                 </li>
-                <li><a href="#"><i class="fa fa-gear fa-fw"></i> Settings</a>
+                <li><a href="admin/user/sua/{{$user_login->id}}"><i class="fa fa-gear fa-fw"></i> Settings</a>
                 </li>
                 <li class="divider"></li>
-                <li><a href="login.html"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
+                <li><a href="admin/dangxuat"><i class="fa fa-sign-out fa-fw"></i> Đăng xuất</a>
                 </li>
             </ul>
+            @endif
             <!-- /.dropdown-user -->
         </li>
         <!-- /.dropdown -->
@@ -102,10 +104,10 @@
                     <a href="#"><i class="fa fa-users fa-fw"></i> User<span class="fa arrow"></span></a>
                     <ul class="nav nav-second-level">
                         <li>
-                            <a href="#">List User</a>
+                            <a href="admin/user/danhsach">Danh sách</a>
                         </li>
                         <li>
-                            <a href="#">Add User</a>
+                            <a href="admin/user/them">Thêm</a>
                         </li>
                     </ul>
                     <!-- /.nav-second-level -->
