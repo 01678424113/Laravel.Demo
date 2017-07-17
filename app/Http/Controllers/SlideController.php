@@ -35,7 +35,7 @@ class SlideController extends Controller
         $slide->NoiDung= $request->NoiDung;
         $slide->link = $request->link;
         if($request->hasFile('Hinh')){
-            $file = $request->file('Hinh');
+            $file = $request- >file('Hinh');
 
             $name = $file->getClientOriginalName();
             $duoi = $file->getClientOriginalExtension();

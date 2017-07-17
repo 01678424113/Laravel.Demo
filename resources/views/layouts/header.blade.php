@@ -3,7 +3,8 @@
     <div class="container">
         <!-- Brand and toggle get grouped for better mobile display -->
         <div class="navbar-header">
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+            <button type="button" class="navbar-toggle" data-toggle="collapse"
+                    data-target="#bs-example-navbar-collapse-1">
                 <span class="sr-only">Toggle navigation</span>
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
@@ -30,26 +31,28 @@
             </form>
 
             <ul class="nav navbar-nav pull-right">
-                <li>
-                    <a href="#">Đăng ký</a>
-                </li>
-                <li>
-                    <a href="#">Đăng nhập</a>
-                </li>
-                <li>
-                    <a>
-                        <span class ="glyphicon glyphicon-user"></span>
-                        Bùi Đức Phú
-                    </a>
-                </li>
+                @if(!isset($nguoidung))
+                    <li>
+                        <a href="#">Đăng ký</a>
+                    </li>
+                    <li>
+                        <a href="dangnhap">Đăng nhập</a>
+                    </li>
+                @else
+                    <li>
+                        <a>
+                            <span class="glyphicon glyphicon-user"></span>
+                            {{$nguoidung->name}}
+                        </a>
+                    </li>
 
-                <li>
-                    <a href="#">Đăng xuất</a>
-                </li>
+                    <li>
+                        <a href="dangxuat">Đăng xuất</a>
+                    </li>
+                @endif
 
             </ul>
         </div>
-
 
 
         <!-- /.navbar-collapse -->

@@ -11,7 +11,6 @@
         <a class="navbar-brand" href="index.html">Laravel Demo</a>
     </div>
     <!-- /.navbar-header -->
-
     <ul class="nav navbar-top-links navbar-right">
         <!-- /.dropdown -->
         <li class="dropdown">
@@ -20,7 +19,7 @@
             </a>
             @if(isset($user_login))
             <ul class="dropdown-menu dropdown-user">
-                <li><i class="fa fa-user fa-fw"></i> {{$user_login->email}}
+                <li><i class="fa fa-user fa-fw"></i> {{$use_login->email}}
                 </li>
                 <li><a href="admin/user/sua/{{$user_login->id}}"><i class="fa fa-gear fa-fw"></i> Settings</a>
                 </li>
