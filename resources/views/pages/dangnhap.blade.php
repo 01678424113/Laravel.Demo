@@ -7,7 +7,7 @@
             <div class="col-md-4"></div>
             <div class="col-md-4">
                 @if(session('thongbao'))
-                    <div class="alert alert-danger">
+                    <div class="alert alert-warning">
                         {{session('thongbao')}}
                     </div>
                 @endif

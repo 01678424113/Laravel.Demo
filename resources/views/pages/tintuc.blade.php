@@ -26,7 +26,7 @@
 
                 <!-- Post Content -->
                 <p class="lead">
-                    {!! $tintuc->NoiDung !!}}
+                    {!! $tintuc->NoiDung !!}
                 </p>
 
                 <hr>
@@ -34,16 +34,19 @@
                 <!-- Blog Comments -->
 
                 <!-- Comments Form -->
+                <?php $nd = Auth::user(); ?>
+                @if(isset($nd))
                 <div class="well">
                     <h4>Viết bình luận ...<span class="glyphicon glyphicon-pencil"></span></h4>
-                    <form role="form">
+                    <form role="form" action="comment/{{$tintuc->id}}" method="post">
+                        <input type="hidden" name="_token" value="{{csrf_token()}}">
                         <div class="form-group">
-                            <textarea class="form-control" rows="3"></textarea>
+                            <textarea class="form-control" rows="3" name="NoiDung"></textarea>
                         </div>
                         <button type="submit" class="btn btn-primary">Gửi</button>
                     </form>
                 </div>
-
+                @endif
                 <hr>
 
                 <!-- Posted Comments -->
@@ -55,10 +58,9 @@
                             <img class="media-object" src="http://placehold.it/64x64" alt="">
                         </a>
                         <div class="media-body">
-                            <h4 class="media-heading">{{$cm->user->name}}
-                                <small>{{$cm->create_at}}</small>
-                            </h4>
-                            {{$cm->NoiDung}}
+                            <h4 class="media-heading">{{$cm->user->name}}</h4>
+                            {{$cm->NoiDung}}<br>
+                            <small>{{$cm->created_at}}</small>
                         </div>
                     </div>
                 @endforeach

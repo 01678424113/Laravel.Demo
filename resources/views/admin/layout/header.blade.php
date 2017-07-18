@@ -17,11 +17,12 @@
             <a class="dropdown-toggle" data-toggle="dropdown" href="#">
                 <i class="fa fa-user fa-fw"></i>  <i class="fa fa-caret-down"></i>
             </a>
-            @if(isset($user_login))
+            <?php $admin = Auth::user(); ?>
+            @if(isset($admin))
             <ul class="dropdown-menu dropdown-user">
-                <li><i class="fa fa-user fa-fw"></i> {{$use_login->email}}
+                <li style="margin-left:20px;"><i class="fa fa-user fa-fw"></i> {{$admin->name}}
                 </li>
-                <li><a href="admin/user/sua/{{$user_login->id}}"><i class="fa fa-gear fa-fw"></i> Settings</a>
+                <li><a href="admin/user/sua/{{$admin->id}}"><i class="fa fa-gear fa-fw"></i> Settings</a>
                 </li>
                 <li class="divider"></li>
                 <li><a href="admin/dangxuat"><i class="fa fa-sign-out fa-fw"></i> Đăng xuất</a>

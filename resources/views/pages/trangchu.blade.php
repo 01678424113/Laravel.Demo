@@ -23,7 +23,7 @@
                                     @if(count($tl->loaitin) > 0)
                                         <a href="category.html">{{$tl->Ten}}</a> |
                                         @foreach($tl->loaitin as $lt)
-                                            <small><a href="loaitin/{{$lt->id}}/{{$lt->TieuDeKhongDau}}.html">{{$lt->Ten}}</a> /</small>
+                                            <small><a href="loaitin/{{$lt->id}}/{{$lt->TenKhongDau}}.html">{{$lt->Ten}}</a> /</small>
                                         @endforeach
                                 </h3>
                                 <div class="col-md-8 border-right">

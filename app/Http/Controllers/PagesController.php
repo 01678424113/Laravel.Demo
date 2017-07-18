@@ -7,6 +7,7 @@ use App\TheLoai;
 use App\Slide;
 use App\LoaiTin;
 use App\Tintuc;
+use App\User;
 use Illuminate\Support\Facades\Auth;
 
 class PagesController extends Controller
@@ -21,7 +22,7 @@ class PagesController extends Controller
 
         if(Auth::check())
         {
-            $user = Auth::users();
+            $user = Auth::user();
             view()->share('nguoidung',$user);
         }
     }
@@ -70,5 +71,62 @@ class PagesController extends Controller
         {
             return redirect('dangnhap')->with('thongbao','Đăng nhập không thành công');
         }
+    }
+    function getDangxuat()
+    {
+        Auth::logout();
+        return redirect('trangchu');
+    }
+
+    function getNguoidung($id)
+    {
+        $nd = Auth::user();
+        return view('pages.nguoidung',['nd'=>$nd]);
+    }
+    function postNguoidung(){
+
+    }
+
+    public function getDangki()
+    {
+        return view('pages.dangki');
+    }
+
+    public function postDangki(Request $request)
+    {
+        $this->validate($request,
+            [
+                'name' => 'required|min:3|max:30',
+                'email' => 'required|email|unique:users,email',
+                'password' => 'required|min:3|max:32',
+                'passwordAgain' => 'required|same:password'
+            ],
+            [
+                'name.required' => 'Chưa nhập tên User',
+                'name.min' => 'Tên phải 3-30 kí tự',
+                'name.max' => 'Tên phải 3-30 kí tự',
+                'email.required' => 'Chưa nhập email',
+                'email.email' => 'Email chưa đúng',
+                'email.unique' => 'Email đã tồn tại',
+                'password.required' => 'Chưa nhập password',
+                'password.min' => 'Password phải có 3-32 kí tự',
+                'password.max' => 'Password phải có 3-32 kí tự',
+                'passwordAgain.required' => 'Chưa nhập lại password',
+                'passwordAgain.same' => 'Password nhập lại chưa đúng'
+            ]);
+        $user = new User;
+        $user->name = $request->name;
+        $user->email = $request->email;
+        $user->quyen = 0;
+        $user->password = bcrypt($request->password);
+        $user->save();
+        return redirect('dangnhap')->with('thongbao', 'Đăng kí thành công. Bạn có thể đăng nhập.');
+    }
+
+    public function postTimkiem(Request $request)
+    {
+        $tukhoa = $request->tukhoa;
+        $tintuc = TinTuc::where('TieuDe','like',"%$tukhoa%")->orWhere('TomTat','like',"%$tukhoa%")->orWhere('NoiDung','like',"%$tukhoa%")->take(30)->paginate(5);
+        return view('pages.timkiem',['tukhoa'=>$tukhoa,'tintuc'=>$tintuc]);
     }
 }

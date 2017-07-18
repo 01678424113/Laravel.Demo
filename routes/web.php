@@ -98,3 +98,13 @@ Route::get('dangnhap','PagesController@getDangnhap');
 Route::post('dangnhap','PagesController@postDangnhap');
 
 Route::get('dangxuat','PagesController@getDangxuat');
+
+Route::post('comment/{id}','CommentController@postComment');
+
+Route::get('nguoidung/{id}','PagesController@getNguoidung');
+Route::post('nguoidung/{id}','PagesController@postNguoiDung');
+
+Route::get('dangki','PagesController@getDangki');
+Route::post('dangki','PagesController@postDangki');
+
+Route::post('timkiem','PagesController@postTimkiem');

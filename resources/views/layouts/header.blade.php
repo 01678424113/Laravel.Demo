@@ -23,26 +23,29 @@
                 </li>
             </ul>
 
-            <form class="navbar-form navbar-left" role="search">
+            <form class="navbar-form navbar-left" role="search" action="timkiem" method="post">
+                <input type="hidden" name="_token" value="{{csrf_token()}}">
                 <div class="form-group">
-                    <input type="text" class="form-control" placeholder="Search">
+                    <input type="text" class="form-control" placeholder="Search" name="tukhoa">
                 </div>
                 <button type="submit" class="btn btn-default">Submit</button>
             </form>
 
             <ul class="nav navbar-nav pull-right">
-                @if(!isset($nguoidung))
+
+                <?php $nd = Auth::user();?>
+                @if(!isset($nd))
                     <li>
-                        <a href="#">Đăng ký</a>
+                        <a href="dangki">Đăng ký</a>
                     </li>
                     <li>
                         <a href="dangnhap">Đăng nhập</a>
                     </li>
                 @else
                     <li>
-                        <a>
+                        <a href="nguoidung/{{$nd->id}}">
                             <span class="glyphicon glyphicon-user"></span>
-                            {{$nguoidung->name}}
+                            {{$nd->name}}
                         </a>
                     </li>
 

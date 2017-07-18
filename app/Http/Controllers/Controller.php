@@ -10,11 +10,11 @@ use Illuminate\Support\Facades\Auth;
 class Controller extends BaseController
 {
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
-    function __construct()
+    public function __construct()
     {
         $this->DangNhap();
     }
-    function DangNhap(){
+    public function DangNhap(){
         if(Auth::check()){
             $user_login = Auth::user()->all();
             view()->share('user_login',$user_login);
