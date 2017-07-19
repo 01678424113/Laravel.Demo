@@ -33,6 +33,7 @@
 
             <ul class="nav navbar-nav pull-right">
 
+
                 <?php $nd = Auth::user();?>
                 @if(!isset($nd))
                     <li>

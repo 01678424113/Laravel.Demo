@@ -7,7 +7,6 @@
             <?php
                 function doimau($str,$tukhoa)
                 {
-
                     return str_replace($tukhoa,"<span style='color:red;'>$tukhoa</span>",$str);;
                 };
             ?>
